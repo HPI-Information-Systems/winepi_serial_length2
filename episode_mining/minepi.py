@@ -146,7 +146,7 @@ class MINEPI(object):
 		L1 = self.createLargeEpisodeSet(C1)
 		L = [L1]
 		k = 2
-		while (len(L[k-2]) > 0):
+		while (k<=2):
 			Ck = self.createCandidates(L[k-2], L1, k)
 			Lk = self.createLargeEpisodeSet(Ck)
 			L.append(Lk)

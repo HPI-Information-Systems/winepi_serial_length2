@@ -137,7 +137,8 @@ class WINEPI(object):
 		L1, supportData = self.scanWindows(windows, C1)
 		L = [L1]
 		k = 2
-		while (len(L[k-2]) > 0):
+		while (k <= 2):
+			print(k)
 			Ck = self.aprioriGen(L[k-2], k)
 			Lk, supK = self.scanWindows(windows, Ck) #scan DB to get Lk
 			supportData.update(supK)
