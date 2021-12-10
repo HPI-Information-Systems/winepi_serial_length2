@@ -13,7 +13,7 @@ def loadTimestampToEventDictFromFile(filePath):
     file.close()
     timestampToEventDict = {}
     keysSorted = sorted(res.keys())
-    keysSorted = keysSorted[-10:]
+    #keysSorted = keysSorted[-10:]
     for key in keysSorted:
         timestamps = sorted(list(map(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"),res[key])))
         for ts in timestamps:
