@@ -1,5 +1,5 @@
-timepointsFile="data/timepointsSocrata.json"
-outputRootPath="data/results/socrata/"
+timepointsFile="../../data/timepointsSocrata.json"
+outputRootPath="../../data/results/socrata/"
 
-code/episode_mining/Main.py "WINEPI" "data/socrata/column_table_changes_aggregated_grouped.json"
+python3 Main.py "WINEPI" "../../data/socrata/column_table_changes_aggregated_grouped.json"
 
