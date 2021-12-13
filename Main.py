@@ -14,15 +14,14 @@ def loadTimestampToEventDictFromFile(filePath):
     file.close()
     timestampToEventDict = {}
     keysSorted = sorted(res.keys())
-    # keysSorted = keysSorted[-10:]
-    for key in keysSorted:
+    for i,key in enumerate(keysSorted):
         timestamps = sorted(list(map(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"), res[key])))
         for ts in timestamps:
             eventList = timestampToEventDict.get(ts)
             if eventList is not None:
-                eventList.append(key)
+                eventList.append(i)
             else:
-                newList = [key]
+                newList = [i]
                 timestampToEventDict[ts] = newList
     return timestampToEventDict
 
