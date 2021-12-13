@@ -1,4 +1,5 @@
 # Episode mining
+
 An inplementation of sequential patterm mining method [1] in Python.
 
 ## Installation
@@ -8,13 +9,16 @@ git clone https://github.com/duytri/EpisodeMining.git
 cd EpisodeMining
 python setup.py install
 ```
+
 or using pip
+
 ```bash
 cd EpisodeMining
 pip install ./
 ```
 
 ## How to use
+
 1. Set event sequence and episodes
 
 ```python
@@ -60,4 +64,6 @@ WINEPIRule: ['E', 'A'] ==> ['E', 'A', 'C'] [5] [0.12195121951219512, 0.714285714
 ```
 
 # Reference
-1. H. Mannila, H. Toivonen, and A. I. Verkamo, “Discovery of Frequent Episodes in Event Sequences,” Data Min. Knowl. Discov., vol. 1, no. 3, pp. 259–289, 1997.
+
+1. H. Mannila, H. Toivonen, and A. I. Verkamo, “Discovery of Frequent Episodes in Event Sequences,” Data Min. Knowl.
+   Discov., vol. 1, no. 3, pp. 259–289, 1997.
