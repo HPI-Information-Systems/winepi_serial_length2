@@ -25,10 +25,11 @@ class WINEPI(object):
         #first window:
         firstTS = self.sequence[0][0]
         i = 0
-        firstWindow = []
+        firstTransaction = []
         while(self.sequence[i][0] == firstTS):
-            firstWindow.append(self.sequence[i][1])
+            firstTransaction.append(self.sequence[i][1])
             i = i+1
+        firstWindow = [firstTransaction]
         windows = [firstWindow] #[list(self.sequence[0][1])]
         t_end = self.sequence[0][0] + self.step
         t_start = t_end - self.width
@@ -39,11 +40,22 @@ class WINEPI(object):
         for i in range(noWins - 1):  # because 1st window has been generated.
             print("Processing Window",i)
             row = []
+            curTransaction = []
             t_start += self.step;
             t_end += self.step
+            t_current = t_start
             for event in self.sequence:
                 if t_start <= event[0] and event[0] < t_end:
-                    row.append(event[1])
+                    if t_current == event[0]:
+                        curTransaction.append(event[1])
+                    else:
+                       row.append(curTransaction)
+                       t_current = event[0]
+                       curTransaction = []
+                       curTransaction.append(event[1])
+                elif event[0] >= t_end:
+                    break
+            row.append(curTransaction)
             windows.append(row)
         return windows
 
@@ -51,13 +63,14 @@ class WINEPI(object):
         C1 = []
         count = 0
         total = len(windows)
-        for transaction in windows:
+        for window in windows:
             print("Finished Window",count,"total:", total)
             sys.stdout.flush()
             count += 1
-            for item in transaction:
-                if not [item] in C1:
-                    C1.append([item])
+            for transaction in window:
+                for item in transaction:
+                    if not [item] in C1:
+                        C1.append([item])
 
         C1.sort()
         return list(C1)
@@ -83,10 +96,10 @@ class WINEPI(object):
             supportData[key] = support
         return retList, supportData
 
-    def isSubsetInOrderWithGap(self, sub, lst):
+    def isSubsetInOrderWithGap(self, sub, window):
         ln, j = len(sub), 0
-        for elem in lst:
-            if elem == sub[j]:
+        for transaction in window:
+            if sub[j] in transaction:
                 j += 1
             if j == ln:
                 return True
