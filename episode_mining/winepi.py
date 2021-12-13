@@ -22,7 +22,14 @@ class WINEPI(object):
             self.scanWindows = self.scanWindows_serial
 
     def slidingWindow(self):
-        windows = [list(self.sequence[0][1])]
+        #first window:
+        firstTS = self.sequence[0][0]
+        i = 0
+        firstWindow = []
+        while(self.sequence[i][0] == firstTS):
+            firstWindow.append(self.sequence[i][1])
+            i = i+1
+        windows = [firstWindow] #[list(self.sequence[0][1])]
         t_end = self.sequence[0][0] + self.step
         t_start = t_end - self.width
         # number of windows = (Te - Ts + width - step)/step = (te_max - ts_min + width)/step
@@ -95,7 +102,7 @@ class WINEPI(object):
             print("Starting Window", count, "Total:", windowCount)
             sys.stdout.flush()
             for can in Ck:
-                if self.isSubsetInOrderWithGap(can, tid):
+                if self.isSubsetInOrderWithGap(can, tid): #TODO: this does not work as it should!
                     if not tuple(can) in ssCnt:
                         ssCnt[tuple(can)] = 1
                     else:
