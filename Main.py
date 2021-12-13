@@ -69,7 +69,7 @@ def main(algorithmType,dataFile):
     elif (algorithmType == "MINEPI"):
         print("Starting MINEPI")
         alg = MINEPI(sequence, episode_type='serial')
-        freqEpisodes = alg.MinEpi(max_width=11, step=1, minFrequent=1)
+        freqEpisodes = alg.MinEpi(max_width=11, step=1, minFrequent=0.05)
         print("Done with MINEPI")
         minepiRules = MinEpiRules(freqEpisodes, max_width=11, step=1, minConfidence=0.9)
         ruleList = minepiRules.generateRules()
