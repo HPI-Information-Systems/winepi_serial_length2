@@ -80,10 +80,13 @@ def main(algorithmType,dataFile):
 
 if __name__ == "__main__":
     print('Number of arguments:', len(sys.argv), 'arguments.')
+    sys.stdout.flush()
     print('Argument List:', str(sys.argv))
+    sys.stdout.flush()
     algorithmType = sys.argv[1]
     dataFile = sys.argv[2]
     start = timeit.default_timer()
     main(algorithmType, dataFile)
     stop = timeit.default_timer()
     print('Total Time: ', stop - start)
+    sys.stdout.flush()
