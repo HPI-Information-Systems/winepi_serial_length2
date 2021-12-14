@@ -18,6 +18,11 @@ class Main():
         self.minConfidence = float(minConfidence)
         self.timestampStepsInHours = int(timestampStepsInHours)
 
+    def parseDateTime(self,x):
+        if ('T' not in x):
+            x = x + 'T0'
+        return datetime.datetime.strptime(x, "%Y-%m-%dT%H")
+
     def loadTimestampToEventDictFromFile(self):
         file = open(dataFile)
         res = json.load(file)
@@ -25,7 +30,7 @@ class Main():
         timestampToEventDict = {}
         keysSorted = sorted(res.keys())
         for i,key in enumerate(keysSorted):
-            timestamps = sorted(list(map(lambda x: datetime.datetime.strptime(x, "%Y-%m-%d"), res[key])))
+            timestamps = sorted(list(map(lambda x: self.parseDateTime(x), res[key])))
             for ts in timestamps:
                 eventList = timestampToEventDict.get(ts)
                 if eventList is not None:
