@@ -38,7 +38,7 @@ class Main():
                 else:
                     newList = [i]
                     timestampToEventDict[ts] = newList
-        return timestampToEventDict
+        return timestampToEventDict,keysSorted
 
 
     def getTimestampToIntegerDict(self, timestampsSorted):
@@ -70,7 +70,7 @@ class Main():
     def main(self):
         print("Starting Data Loading")
         # print(timestampToEventDict)
-        timestampToEventDict = self.loadTimestampToEventDictFromFile()
+        timestampToEventDict,eventsSorted = self.loadTimestampToEventDictFromFile()
         timestampsSorted = sorted(timestampToEventDict.keys())
         timestampToIntegerDict = self.getTimestampToIntegerDict(timestampsSorted)
         sequence = self.getFinalSequence(timestampsSorted, timestampToIntegerDict, timestampToEventDict)
