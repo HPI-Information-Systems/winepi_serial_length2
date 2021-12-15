@@ -23,44 +23,34 @@ class WINEPI(object):
 
     def slidingWindow(self):
         #first window:
-        firstTS = self.sequence[0][0]
-        i = 0
-        firstTransaction = []
-        while(self.sequence[i][0] == firstTS):
-            firstTransaction.append(self.sequence[i][1])
-            i = i+1
-        firstWindow = [firstTransaction]
-        windows = [firstWindow] #[list(self.sequence[0][1])]
+        windows = [[self.sequence[0][1]]]
         t_end = self.sequence[0][0] + self.step
         t_start = t_end - self.width
-        # number of windows = (Te - Ts + width - step)/step = (te_max - ts_min + width)/step
         noWins = int((self.sequence[-1][0] - self.sequence[0][0] + self.width) / self.step)
-        print("Generating windows between [0,",noWins-1,")")
-        sys.stdout.flush()
+        print("Generating windows between [0,", noWins - 1, ")")
+        sequenceStartIndex=0
         for i in range(noWins - 1):  # because 1st window has been generated.
             print("Processing Window",i)
-            row = []
-            curTransaction = []
+            window = []
             t_start += self.step;
             t_end += self.step
             t_current = t_start
-            for event in self.sequence:
-                if t_start <= event[0] and event[0] < t_end:
-                    if t_current == event[0]:
-                        curTransaction.append(event[1])
-                    else:
-                       row.append(curTransaction)
-                       t_current = event[0]
-                       curTransaction = []
-                       curTransaction.append(event[1])
-                elif event[0] >= t_end:
-                    break
-            row.append(curTransaction)
-            windows.append(row)
+            done=False
+            curIndex=sequenceStartIndex
+            while(not done and curIndex < len(self.sequence)):
+                transaction = self.sequence[curIndex]
+                if(t_start > transaction[0]):
+                    sequenceStartIndex +=1
+                if t_start <= transaction[0] and transaction[0] < t_end:
+                    window.append(transaction[1])
+                if transaction[0] >= t_end:
+                    done=True
+                curIndex+=1
+            windows.append(window)
         return windows
 
     def createC1(self, windows):
-        C1 = []
+        C1 = set()
         count = 0
         total = len(windows)
         for window in windows:
@@ -69,11 +59,10 @@ class WINEPI(object):
             count += 1
             for transaction in window:
                 for item in transaction:
-                    if not [item] in C1:
-                        C1.append([item])
-
-        C1.sort()
-        return list(C1)
+                    C1.add(item)
+        C1List = list(map(lambda c: [c],list(C1)))
+        C1List.sort()
+        return C1List
 
     def scanWindows_parallel(self, windows, Ck):
         ssCnt = {}
@@ -115,7 +104,7 @@ class WINEPI(object):
             print("Starting Window", count, "Total:", windowCount)
             sys.stdout.flush()
             for can in Ck:
-                if self.isSubsetInOrderWithGap(can, tid): #TODO: this does not work as it should!
+                if self.isSubsetInOrderWithGap(can, tid):
                     if not tuple(can) in ssCnt:
                         ssCnt[tuple(can)] = 1
                     else:

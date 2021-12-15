@@ -29,15 +29,16 @@ class Main():
         file.close()
         timestampToEventDict = {}
         keysSorted = sorted(res.keys())
+        #keysSorted = keysSorted[-50:]
         for i,key in enumerate(keysSorted):
             timestamps = sorted(list(map(lambda x: self.parseDateTime(x), res[key])))
             for ts in timestamps:
-                eventList = timestampToEventDict.get(ts)
-                if eventList is not None:
-                    eventList.append(i)
+                eventSet = timestampToEventDict.get(ts)
+                if eventSet is not None:
+                    eventSet.add(i)
                 else:
-                    newList = [i]
-                    timestampToEventDict[ts] = newList
+                    newSet = {i}
+                    timestampToEventDict[ts] = newSet
         return timestampToEventDict,keysSorted
 
 
@@ -62,8 +63,7 @@ class Main():
         finalList = []
         for ts in timestampsSorted:
             i = timestampToIntegerDict[ts]
-            for key in timestampToEventDict[ts]:
-                finalList.append((i, key))
+            finalList.append((i, timestampToEventDict[ts]))
         return finalList
 
 
