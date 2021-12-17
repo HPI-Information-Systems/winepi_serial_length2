@@ -1,4 +1,5 @@
 import json
+import random
 import sys
 import time
 import datetime
@@ -9,7 +10,7 @@ from episode_mining.winepi import WINEPI, WinEpiRules
 
 class Main():
 
-    def __init__(self,algorithmType,dataFile,width,step,minSupport,minConfidence,timestampStepsInHours):
+    def __init__(self, algorithmType, dataFile, width, step, minSupport, minConfidence, timestampStepsInHours, eventSamplingRate):
         self.algorithmType = algorithmType
         self.dataFile = dataFile
         self.width = int(width)
@@ -17,6 +18,7 @@ class Main():
         self.minSupport = float(minSupport)
         self.minConfidence = float(minConfidence)
         self.timestampStepsInHours = int(timestampStepsInHours)
+        self.eventSamplingRate = eventSamplingRate
 
     def parseDateTime(self,x):
         if ('T' not in x):
@@ -29,7 +31,8 @@ class Main():
         file.close()
         timestampToEventDict = {}
         keysSorted = sorted(res.keys())
-        #keysSorted = keysSorted[-50:]
+        toSample = int(self.eventSamplingRate * len(keysSorted))
+        keysSorted = random.sample(keysSorted,toSample)
         for i,key in enumerate(keysSorted):
             timestamps = sorted(list(map(lambda x: self.parseDateTime(x), res[key])))
             for ts in timestamps:
@@ -109,11 +112,12 @@ if __name__ == "__main__":
     minSupport = sys.argv[5]
     minConfidence = sys.argv[6]
     timestampStepsInHours = sys.argv[7]
+    samplingRate = float(sys.argv[8])
     #width=11, step=1, minFrequent=0.05)
         #print("Done with WINEPI")
         #winepiRules = WinEpiRules(freqItems, suppData, width=11, minConfidence=0.9)
     start = timeit.default_timer()
-    mainObject = Main(algorithmType,dataFile,width,step,minSupport,minConfidence,timestampStepsInHours)
+    mainObject = Main(algorithmType,dataFile,width,step,minSupport,minConfidence,timestampStepsInHours,samplingRate)
     mainObject.main()
     stop = timeit.default_timer()
     print('Total Time: ', stop - start)
