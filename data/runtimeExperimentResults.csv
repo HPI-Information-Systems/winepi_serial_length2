@@ -1,0 +1,79 @@
+Approach,Datasource,Dataset,Sample size,RuntimeInSeconds,WasOutOfMemory
+CRMiner (nThreads=1),Wikipedia,wikipedia,1E-06,45,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,5E-06,45,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,1E-05,46,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,2E-05,45,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,5E-05,46,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.0001,46,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.001,48,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.005,62,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.01,74,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.05,201,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.1,437,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.2,866,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.3,1739,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.4,2631,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,0.5,4043,FALSE
+CRMiner (nThreads=1),Wikipedia,wikipedia,1,13669,False
+CRMiner (nThreads=1),Socrata,socrata,0.001,0,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.005,1,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.01,21,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.05,25,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.1,91,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.2,348,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.3,791,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.4,1375,FALSE
+CRMiner (nThreads=1),Socrata,socrata,0.5,2235,FALSE
+CRMiner (nThreads=1),Socrata,socrata,1,8739,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,1E-06,45,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,5E-06,45,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,1E-05,45,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,2E-05,46,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,5E-05,45,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.0001,46,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.001,48,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.005,54,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.01,62,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.05,141,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.1,247,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.2,593,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.3,828,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.4,961,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,0.5,1146,FALSE
+CRMiner (nThreads=10),Wikipedia,wikipedia,1,2374,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.001,1,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.005,1,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.01,1,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.05,4,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.1,12,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.2,48,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.3,107,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.4,181,FALSE
+CRMiner (nThreads=10),Socrata,socrata,0.5,288,FALSE
+CRMiner (nThreads=10),Socrata,socrata,1,1238,FALSE
+WINEPI,Socrata,socrata,1,NA,TRUE
+WINEPI,Socrata,socrata,0.001,1,FALSE
+WINEPI,Socrata,socrata,0.005,21,FALSE
+WINEPI,Socrata,socrata,0.01,91,FALSE
+WINEPI,Socrata,socrata,0.05,9909,FALSE
+WINEPI,Socrata,socrata,0.1,NA,FALSE
+WINEPI,Socrata,socrata,0.2,NA,FALSE
+WINEPI,Socrata,socrata,0.3,NA,FALSE
+WINEPI,Socrata,socrata,0.4,NA,TRUE
+WINEPI,Socrata,socrata,0.5,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.001,NA,FALSE
+WINEPI,Wikipedia,wikipedia,0.005,NA,FALSE
+WINEPI,Wikipedia,wikipedia,0.01,NA,FALSE
+WINEPI,Wikipedia,wikipedia,0.05,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.1,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.2,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.3,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.4,NA,TRUE
+WINEPI,Wikipedia,wikipedia,0.5,NA,TRUE
+WINEPI,Wikipedia,wikipedia,1,NA,TRUE
+WINEPI,Wikipedia,wikipedia,1E-06,43,FALSE
+WINEPI,Wikipedia,wikipedia,5E-06,58,FALSE
+WINEPI,Wikipedia,wikipedia,1E-05,101,FALSE
+WINEPI,Wikipedia,wikipedia,2E-05,296,FALSE
+WINEPI,Wikipedia,wikipedia,5E-05,1700,FALSE
+WINEPI,Wikipedia,wikipedia,0.0001,1700,FALSE
