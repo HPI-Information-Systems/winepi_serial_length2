@@ -5,7 +5,6 @@ import time
 import datetime
 import timeit
 
-from episode_mining.minepi import MINEPI, MinEpiRules
 from episode_mining.winepi import WINEPI, WinEpiRules
 
 class Main():
